@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "flux-prompt-gen:build:production"
+              "buildTarget": "flux-prompt-gen:build:production"
             },
             "development": {
-              "browserTarget": "flux-prompt-gen:build:development"
+              "buildTarget": "flux-prompt-gen:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "flux-prompt-gen:build"
+            "buildTarget": "flux-prompt-gen:build"
           }
         },
         "test": {
