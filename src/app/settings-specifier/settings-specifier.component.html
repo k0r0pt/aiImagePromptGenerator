@@ -1,0 +1,52 @@
+<br />
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      The Basics
+    </mat-panel-title>
+    <mat-panel-description>
+      Check The Basic Settings
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-form-field class="example-form-field">
+    <mat-label>Custom Input Prompt (optional)</mat-label>
+    <textarea matInput [ariaMultiLine]="true" [value]="basicSettings.customInputPrompt"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-form-field">
+    <mat-label>Subject (optional)</mat-label>
+    <textarea matInput [ariaMultiLine]="true" [value]="basicSettings.subject"></textarea>
+  </mat-form-field>
+  <label id="gender-label">Gender</label>
+  <mat-radio-group aria-labelledby="gender-label" [value]="basicSettings.gender">
+    <mat-radio-button value="Female">Female</mat-radio-button>
+    <mat-radio-button value="Male">Male</mat-radio-button>
+  </mat-radio-group>
+  <br />
+  <label id="set-all-options-to-label">Set All Options To</label>
+  <mat-radio-group aria-labelledby="set-all-options-to-label" [value]="basicSettings.setAllOptionsTo">
+    <mat-radio-button value="Disabled">Disabled</mat-radio-button>
+    <mat-radio-button value="Random">Random</mat-radio-button>
+  </mat-radio-group>
+</mat-expansion-panel>
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Artform and Photo Type
+    </mat-panel-title>
+    <mat-panel-description>
+      Check The Artform and Photo Type Settings
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-form-field appearance="fill">
+    <mat-label>Artform</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let artform of artforms" [value]="artform">{{artform}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Photo Type</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let photoType of photoTypes" [value]="photoType">{{photoType}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-expansion-panel>
