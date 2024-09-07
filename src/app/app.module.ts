@@ -10,25 +10,18 @@ import { MatSelectModule } from '@angular/material/select'
 import { AppComponent } from './app.component';
 import { SettingsSpecifierComponent } from './settings-specifier/settings-specifier.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    SettingsSpecifierComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatExpansionModule,
-    MatRadioModule,
-    MatSelectModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        SettingsSpecifierComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatExpansionModule,
+        MatRadioModule,
+        MatSelectModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
