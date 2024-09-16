@@ -1,6 +1,6 @@
 # ImageGenPromptGenerator
 
-[![Build Status](./actions/workflows/build.yml/badge.svg)](./actions/workflows/build.yml)
+[![Build Status](https://github.com/k0r0pt/aiImagePromptGenerator/actions/workflows/build.yml/badge.svg)](https://github.com/k0r0pt/aiImagePromptGenerator/actions/workflows/build.yml)
 
 This is our Image AI Prompt Generator, and was heavily inspired by [@gokaygokay](https://huggingface.co/gokaygokay)'s [Flux Prompt Generator](https://huggingface.co/spaces/gokaygokay/FLUX-Prompt-Generator) over on [Huggingface](https://huggingface.co).
 
