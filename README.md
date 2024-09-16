@@ -6,7 +6,7 @@ This is our Image AI Prompt Generator, and was heavily inspired by [@gokaygokay]
 
 ## Dependencies
 
-Currently, for LLM Prompt generation, this app requires Ollama to be running. It can run on local (default endpoint), or you can specify the location in the 3rd panel.
+Currently, for LLM Prompt generation, this app requires Ollama to be running. It can run on local (default endpoint - http://localhost:11434), or you can specify the location in the 3rd panel.
 
 ## Features
 
