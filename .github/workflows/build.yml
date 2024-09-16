@@ -16,5 +16,7 @@ jobs:
         with:
           node-version: 20.9.0
           registry-url: https://registry.npmjs.org
-      - name: ⌛️ Build
+      - name: ⌛️ Resolve Dependencies
         run: npm ci
+      - name: 🔨 Build
+        run: npm run build
