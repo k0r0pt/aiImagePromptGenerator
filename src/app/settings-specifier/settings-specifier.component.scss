@@ -6,15 +6,15 @@ mat-expansion-panel mat-form-field {
 }
 
 div.odd {
-  background-color: mat.m2-get-color-from-palette(fpg.$flux-prompt-gen-accent, 50);
+  background-color: mat.m2-get-color-from-palette(fpg.$k0r0pt-ai-image-prompt-gen-accent, 50);
 
   mat-radio-group: {
-    color: mat.m2-get-color-from-palette(fpg.$flux-prompt-gen-primary, 500);
+    color: mat.m2-get-color-from-palette(fpg.$k0r0pt-ai-image-prompt-gen-primary, 500);
   }
 }
 
 div.even {
-  background-color: mat.m2-get-color-from-palette(fpg.$flux-prompt-gen-primary, 50);
+  background-color: mat.m2-get-color-from-palette(fpg.$k0r0pt-ai-image-prompt-gen-primary, 50);
 }
 
 div {

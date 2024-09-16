@@ -12,26 +12,26 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$flux-prompt-gen-primary: mat.m2-define-palette(mat.$m2-deep-purple-palette, 500, 100, A100, A400);
-$flux-prompt-gen-accent: mat.m2-define-palette(mat.$m2-amber-palette, 100, A100, A400);
+$k0r0pt-ai-image-prompt-gen-primary: mat.m2-define-palette(mat.$m2-deep-purple-palette, 500, 100, A100, A400);
+$k0r0pt-ai-image-prompt-gen-accent: mat.m2-define-palette(mat.$m2-amber-palette, 100, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$flux-prompt-gen-warn: mat.m2-define-palette(mat.$m2-red-palette);
+$k0r0pt-ai-image-prompt-gen-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$flux-prompt-gen-theme: mat.m2-define-light-theme((
+$k0r0pt-ai-image-prompt-gen-theme: mat.m2-define-light-theme((
   color: (
-    primary: $flux-prompt-gen-primary,
-    accent: $flux-prompt-gen-accent,
-    warn: $flux-prompt-gen-warn,
+    primary: $k0r0pt-ai-image-prompt-gen-primary,
+    accent: $k0r0pt-ai-image-prompt-gen-accent,
+    warn: $k0r0pt-ai-image-prompt-gen-warn,
   )
 ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($flux-prompt-gen-theme);
+@include mat.all-component-themes($k0r0pt-ai-image-prompt-gen-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
