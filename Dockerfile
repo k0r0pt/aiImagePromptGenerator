@@ -1,4 +1,5 @@
-FROM node:20-alpine AS build
+FROM --platform=amd64 node:20-alpine AS build
+# Using AMD64 here explicitly because Github runners are on AMD64 and the compile don't need to slow down because of Qemu virtualization
 USER root
 RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 WORKDIR /home/node/app

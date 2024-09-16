@@ -12,6 +12,8 @@
 <br />
 Alternatively, you can expand the <code>LLM Options</code> in the third panel to specify your Ollama server.
 <br />
+<div *ngIf="runningOnServer">You also need to set this environment variable so that your Ollama can be accessed from the browser when you're visiting this site (yes, we'll be working on better ways of doing this) - <code color="primary">OLLAMA_ORIGINS={{origin}}</code></div>
+<br />
 <br />
 <br />
 <mat-divider></mat-divider>
