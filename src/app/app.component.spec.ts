@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'flux-prompt-gen'`, () => {
+  it(`should have as title 'k0r0pt-ai-image-prompt-gen'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('flux-prompt-gen');
+    expect(app.title).toEqual('k0r0pt-ai-image-prompt-gen');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('flux-prompt-gen app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('k0r0pt-ai-image-prompt-gen app is running!');
   });
 });

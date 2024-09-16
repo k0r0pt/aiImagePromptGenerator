@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "flux-prompt-gen": {
+    "k0r0pt-ai-image-prompt-gen": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": {
-              "base": "dist/flux-prompt-gen"
+              "base": "dist/k0r0pt-ai-image-prompt-gen"
             },
             "index": "src/index.html",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "flux-prompt-gen:build:production"
+              "buildTarget": "k0r0pt-ai-image-prompt-gen:build:production"
             },
             "development": {
-              "buildTarget": "flux-prompt-gen:build:development"
+              "buildTarget": "k0r0pt-ai-image-prompt-gen:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "flux-prompt-gen:build"
+            "buildTarget": "k0r0pt-ai-image-prompt-gen:build"
           }
         },
         "test": {
