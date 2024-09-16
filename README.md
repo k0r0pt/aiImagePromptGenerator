@@ -39,6 +39,7 @@ The selected settings are persisted into cookies, so that if we revisit the app,
 ### k0r0pt AI Image Prompt Generator
 
 You can see it in action here - [k0r0pt AI Image Prompt Generator](https://k0r0pt-ai-image-prompt-gen.sudipto.me)
+**NOTE** - You'll have to add the origin to your local Ollama's allowed origins by setting the `OLLAMA_ORIGINS` environment variable - `OLLAMA_ORIGINS=https://k0r0pt-ai-image-prompt-gen.sudipto.me`
 
 ### Docker
 
