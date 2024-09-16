@@ -1,5 +1,5 @@
 <br />
-<mat-expansion-panel hideToggle>
+<mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
       The Basics
@@ -8,27 +8,36 @@
       Check The Basic Settings
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <mat-form-field class="example-form-field">
-    <mat-label>Custom Input Prompt (optional)</mat-label>
-    <textarea matInput [ariaMultiLine]="true" [value]="basicSettings.customInputPrompt"></textarea>
-  </mat-form-field>
-  <mat-form-field class="example-form-field">
-    <mat-label>Subject (optional)</mat-label>
-    <textarea matInput [ariaMultiLine]="true" [value]="basicSettings.subject"></textarea>
-  </mat-form-field>
-  <label id="gender-label">Gender</label>
-  <mat-radio-group aria-labelledby="gender-label" [value]="basicSettings.gender">
-    <mat-radio-button value="Female">Female</mat-radio-button>
-    <mat-radio-button value="Male">Male</mat-radio-button>
-  </mat-radio-group>
-  <br />
-  <label id="set-all-options-to-label">Set All Options To</label>
-  <mat-radio-group aria-labelledby="set-all-options-to-label" [value]="basicSettings.setAllOptionsTo">
-    <mat-radio-button value="Disabled">Disabled</mat-radio-button>
-    <mat-radio-button value="Random">Random</mat-radio-button>
-  </mat-radio-group>
+  <div class="odd">
+    <mat-form-field>
+      <mat-label>Subject Descriptor (optional)</mat-label>
+      <textarea matInput [ariaMultiLine]="true" [(ngModel)]="this.genOptsService.basicSettings.subject"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field>
+      <mat-label>Custom Input Prompt (optional)</mat-label>
+      <textarea matInput [ariaMultiLine]="true" [(ngModel)]="this.genOptsService.basicSettings.customInputPrompt"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <label id="gender-label">Gender</label><br />
+    <mat-radio-group color="primary" aria-labelledby="gender-label" [(ngModel)]="this.genOptsService.basicSettings.gender">
+      <mat-radio-button value="Female">Female</mat-radio-button>
+      <mat-radio-button value="Male">Male</mat-radio-button>
+    </mat-radio-group>
+    <br />
+  </div>
+  <div class="even">
+    <label id="set-all-options-to-label">Set All Options To</label><br />
+    <mat-radio-group color="primary" aria-labelledby="set-all-options-to-label" [(ngModel)]="this.genOptsService.basicSettings.setAllOptionsTo">
+      <mat-radio-button value="Disabled">Disabled</mat-radio-button>
+      <mat-radio-button value="Random">Random</mat-radio-button>
+    </mat-radio-group>
+  </div>
 </mat-expansion-panel>
-<mat-expansion-panel hideToggle>
+<br />
+<mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
       Artform and Photo Type
@@ -37,16 +46,384 @@
       Check The Artform and Photo Type Settings
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <mat-form-field appearance="fill">
-    <mat-label>Artform</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let artform of artforms" [value]="artform">{{artform}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Photo Type</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let photoType of photoTypes" [value]="photoType">{{photoType}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Artform</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.artformAndPhotoTypeSettings.artform">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredArtforms, genOptsService.artforms, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let artform of genOptsService.filteredArtforms | async" [value]="artform">{{artform}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Photo Type</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.artformAndPhotoTypeSettings.photoType">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPhotoTypes, genOptsService.photoTypes, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let photoType of genOptsService.filteredPhotoTypes | async" [value]="photoType">{{photoType}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-expansion-panel>
+<br />
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Character Settings
+    </mat-panel-title>
+    <mat-panel-description>
+      Check The Character Settings
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Body Type</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.characterSettings.bodyType">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredBodyTypes, genOptsService.bodyTypes, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let bodyType of genOptsService.filteredBodyTypes | async" [value]="bodyType">{{bodyType}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Default Tag</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.characterSettings.defaultTag">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredDefaultTags, genOptsService.defaultTags, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let defaultTag of genOptsService.filteredDefaultTags | async" [value]="defaultTag">{{defaultTag}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.characterSettings.role">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredRoles, genOptsService.roles, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let role of genOptsService.filteredRoles | async" [value]="role">{{role}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Hairstyle</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.characterSettings.hairstyle">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredHairstyles, genOptsService.hairstyles, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let hairstyle of genOptsService.filteredHairstyles | async" [value]="hairstyle">{{hairstyle}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Clothing</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.characterSettings.clothing">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredClothing, genOptsService.clothing, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let clothing of genOptsService.filteredClothing | async" [value]="clothing">{{clothing}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-expansion-panel>
+<br />
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Scene Settings
+    </mat-panel-title>
+    <mat-panel-description>
+      Check The Scene Settings
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Place</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.sceneSettings.place">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPlaces, genOptsService.places, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let place of genOptsService.filteredPlaces | async" [value]="place">{{place}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Lighting</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.sceneSettings.lighting">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredSceneLighting, genOptsService.sceneLighting, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let lighting of genOptsService.filteredSceneLighting | async" [value]="lighting">{{lighting}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Composition</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.sceneSettings.composition">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredCompositions, genOptsService.compositions, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let composition of genOptsService.filteredCompositions | async" [value]="composition">{{composition}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Pose</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.sceneSettings.pose">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPoses, genOptsService.poses, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let pose of genOptsService.filteredPoses | async" [value]="pose">{{pose}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <!-- TODO Use ngx-mat-select-search - https://www.npmjs.com/package/ngx-mat-select-search - https://stackblitz.com/github/bithost-gmbh/ngx-mat-select-search-example?file=src%2Fapp%2Fexamples%2F01-single-selection-example%2Fsingle-selection-example.component.html -->
+      <mat-label>Background</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.sceneSettings.background">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredBackgrounds, genOptsService.backgrounds, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let background of genOptsService.filteredBackgrounds | async" [value]="background">{{background}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-expansion-panel>
+<br />
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Photography Settings
+    </mat-panel-title>
+    <mat-panel-description>
+      Fine-tune The Photography Settings
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Camera</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.photographySettings.camera">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredCameras, genOptsService.cameras, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let camera of genOptsService.filteredCameras | async" [value]="camera">{{camera}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Color Grading</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.photographySettings.colorGrading">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredColorGradings, genOptsService.colorGradings, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let colorGrading of genOptsService.filteredColorGradings | async" [value]="colorGrading">{{colorGrading}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Keyword</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.photographySettings.keyword">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredKeywords, genOptsService.keywords, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let keyword of genOptsService.filteredKeywords | async" [value]="keyword">{{keyword}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Lanscape Subject</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.photographySettings.landscapeSubject">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredLandscapeSubjects, genOptsService.landscapeSubjects, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let landscapeSubject of genOptsService.filteredLandscapeSubjects | async" [value]="landscapeSubject">{{landscapeSubject}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Lens</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.photographySettings.lens">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredLenses, genOptsService.lenses, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let lens of genOptsService.filteredLenses | async" [value]="lens">{{lens}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Lighting</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.photographySettings.lighting">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPhotographyLighting, genOptsService.photographyLighting, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let lighting of genOptsService.filteredPhotographyLighting | async" [value]="lighting">{{lighting}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Photographer</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.photographySettings.photographer">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPhotographers, genOptsService.photographers, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let photographer of genOptsService.filteredPhotographers | async" [value]="photographer">{{photographer}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-expansion-panel>
+<br />
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Pose Settings
+    </mat-panel-title>
+    <mat-panel-description>
+      Fine-tune The Pose Settings
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Basic Pose</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.poseSettings.basic">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredBasicPoses, genOptsService.basicPoses, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let pose of genOptsService.filteredBasicPoses | async" [value]="pose">{{pose}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Advanced Pose</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.poseSettings.advanced">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredAdvancedPoses, genOptsService.advancedPoses, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let pose of genOptsService.filteredAdvancedPoses | async" [value]="pose">{{pose}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-expansion-panel>
+<br />
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Advanced Scene Settings
+    </mat-panel-title>
+    <mat-panel-description>
+      Fine-tune Some more Scene Settings
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Houseplant</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.advancedSceneSettings.houseplant">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredHouseplants, genOptsService.houseplants, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let houseplant of genOptsService.filteredHouseplants | async" [value]="houseplant">{{houseplant}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Modifier</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.advancedSceneSettings.modifier">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredModifiers, genOptsService.modifiers, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let modifier of genOptsService.filteredModifiers | async" [value]="modifier">{{modifier}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Scene</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.advancedSceneSettings.scene">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredAdvancedScenes, genOptsService.advancedScenes, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let scene of genOptsService.filteredAdvancedScenes | async" [value]="scene">{{scene}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Texture</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.advancedSceneSettings.texture">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredTextures, genOptsService.textures, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let texture of genOptsService.filteredTextures | async" [value]="texture">{{texture}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="odd">
+    <mat-form-field appearance="fill">
+      <mat-label>Tree</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.advancedSceneSettings.tree">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredTrees, genOptsService.trees, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let tree of genOptsService.filteredTrees | async" [value]="tree">{{tree}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="even">
+    <mat-form-field appearance="fill">
+      <mat-label>Weather</mat-label>
+      <mat-select [(ngModel)]="this.genOptsService.advancedSceneSettings.weather">
+        <mat-option>
+          <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
+            (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredWeathers, genOptsService.weathers, $event)"></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let weather of genOptsService.filteredWeathers | async" [value]="weather">{{weather}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </mat-expansion-panel>

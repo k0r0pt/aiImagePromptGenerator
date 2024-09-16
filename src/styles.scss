@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$flux-prompt-gen-primary: mat.m2-define-palette(mat.$m2-deep-purple-palette);
-$flux-prompt-gen-accent: mat.m2-define-palette(mat.$m2-amber-palette, A200, A100, A400);
+$flux-prompt-gen-primary: mat.m2-define-palette(mat.$m2-deep-purple-palette, 500, 100, A100, A400);
+$flux-prompt-gen-accent: mat.m2-define-palette(mat.$m2-amber-palette, 100, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $flux-prompt-gen-warn: mat.m2-define-palette(mat.$m2-red-palette);
@@ -37,3 +37,7 @@ $flux-prompt-gen-theme: mat.m2-define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+}

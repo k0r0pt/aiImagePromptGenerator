@@ -1,3 +1,21 @@
-#leftPanel {
-  width: 33%;
+.grid, .linksGrid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid div {
+  flex: 0 0 33%;
+}
+
+.linksGrid div {
+  flex: 0 0 33%;
+  text-align: center;
+}
+
+.linksGrid div * {
+  vertical-align: middle;
+}
+
+h1 {
+  text-align: center;
 }

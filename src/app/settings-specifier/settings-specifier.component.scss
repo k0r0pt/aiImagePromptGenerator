@@ -1,3 +1,22 @@
+@use '@angular/material' as mat;
+@use '../../styles.scss' as fpg;
+
 mat-expansion-panel mat-form-field {
   width: 100%;
+}
+
+div.odd {
+  background-color: mat.m2-get-color-from-palette(fpg.$flux-prompt-gen-accent, 50);
+
+  mat-radio-group: {
+    color: mat.m2-get-color-from-palette(fpg.$flux-prompt-gen-primary, 500);
+  }
+}
+
+div.even {
+  background-color: mat.m2-get-color-from-palette(fpg.$flux-prompt-gen-primary, 50);
+}
+
+div {
+  padding: 10px;
 }

@@ -1,27 +1,55 @@
-# FluxPromptGen
+# ImageGenPromptGenerator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+[![Build Status](./actions/workflows/build.yml/badge.svg)](./actions/workflows/build.yml)
 
-## Development server
+This is our Image AI Prompt Generator, and was heavily inspired by [@gokaygokay](https://huggingface.co/gokaygokay)'s [Flux Prompt Generator](https://huggingface.co/spaces/gokaygokay/FLUX-Prompt-Generator) over on [Huggingface](https://huggingface.co).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Dependencies
 
-## Code scaffolding
+Currently, for LLM Prompt generation, this app requires Ollama to be running. It can run on local (default endpoint), or you can specify the location in the 3rd panel.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
+
+### Sections
+
+The app has 3 sections.
+
+* Settings - This is where you specify the various settings in the scene, the camera properties, the character properties, the background, plants, trees etc.
+* Basic Prompt - This is where the basic prompt is generated based on the input settings in the first panel.
+* LLM Generated Prompt - This is where you can generate an advanced well written prompt using an LLM Model.
+
+### Settings persistence
+
+The selected settings are persisted into cookies, so that if we revisit the app, we can start where we left off.
+
+**The LLM Generation needs Ollama running on your local, and will by default choose [Llama3.1](https://ollama.com/library/llama3.1), if available** - The LLM Generated Prompt section also has a subsection where you can specify where your Ollama is running and choose the LLM model to use.
+
+## Planned Features
+
+* 
+* Please [raise an Issue](./issues/new) for feature you'd like to see here.
+* Please [raise an Issue](./issues/new) for any settings you'd like to see in the Settings panel.
+
+### Note
+
+* Not all Image generation models will work with the LLM generated prompt. Some require, small concise keyword based prompts instead of the prose-like prompts that will be generated with the LLM model(s). In those models, the basic Prompt might work better than the LLM generated prompts, which will work better for Flux based models.
+
+## Dependencies
+
+Run `npm install` to resolve dependencies.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Running
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Docker
 
-## Running end-to-end tests
+Coming soon
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Bare Metal
 
-## Further help
+Run `npm start` to run the project, after which you can access [http://localhost:4200](http://localhost:4200).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Built with [Angular](https://angular.dev/) :heart:

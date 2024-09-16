@@ -1,0 +1,19 @@
+<br />
+<mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Generate Prompt
+    </mat-panel-title>
+    <mat-panel-description>
+      Generate the basic Prompt
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-form-field appearance="fill">
+    <mat-label>Basic Prompt</mat-label>
+    <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="10" cdkAutosizeMaxRows="30" [ariaMultiLine]="true" [(ngModel)]="genOptsService.promptText"></textarea>
+  </mat-form-field>
+</mat-expansion-panel>
+<br />
+<mat-divider></mat-divider>
+<br />
+<button mat-raised-button color="primary" (click)="genOptsService.generateBasicPrompt()">Generate Prompt</button>
