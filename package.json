@@ -19,7 +19,7 @@
     "@angular/material": "^18.2.3",
     "@angular/platform-browser": "^18.2.3",
     "@angular/platform-browser-dynamic": "^18.2.3",
-    "@angular/router": "^18.2.3",
+    "@angular/router": "^18.2.8",
     "@langchain/ollama": "^0.0.4",
     "ngx-cookie-service": "^18.0.0",
     "ngx-mat-select-search": "^7.0.7",
