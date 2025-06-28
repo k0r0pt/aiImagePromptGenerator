@@ -11,19 +11,25 @@
   <mat-form-field>
     <mat-label>LLM Service</mat-label>
     <mat-select [(ngModel)]="this.llmGenService.service">
-      <mat-option *ngFor="let llmSvc of llmGenService.services" [value]="llmSvc">{{llmSvc}}</mat-option>
+      @for (llmSvc of llmGenService.services; track llmSvc) {
+        <mat-option [value]="llmSvc">{{llmSvc}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
   <br />
-  <mat-form-field>
-    <mat-label *ngIf="this.llmGenService.service === 'Ollama'">Ollama Base URL</mat-label>
-    <input matInput type="text" *ngIf="this.llmGenService.service === 'Ollama'" [(ngModel)]="this.llmGenService.ollamaOpts.baseUrl" />
-  </mat-form-field>
-  <br />
+  @if (this.llmGenService.service === 'Ollama') {
+    <mat-form-field>
+    <mat-label>Ollama Base URL</mat-label>
+    <input matInput type="text" [(ngModel)]="this.llmGenService.ollamaOpts.baseUrl" />
+    </mat-form-field>
+    <br />
+  }
   <mat-form-field>
     <mat-label>LLM Model</mat-label>
     <mat-select [(ngModel)]="this.llmGenService.ollamaOpts.model">
-      <mat-option *ngFor="let model of llmGenService.models" [value]="model">{{model}}</mat-option>
+      @for (model of llmGenService.models; track model) {
+        <mat-option [value]="model">{{model}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </mat-expansion-panel>
@@ -36,11 +42,14 @@
       Generate the detailed Prompt with an LLM
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <mat-spinner *ngIf="llmGenService.generatingLlmPrompt"></mat-spinner> 
-  <mat-form-field *ngIf="!llmGenService.generatingLlmPrompt" appearance="fill">
-    <mat-label>Detailed Prompt</mat-label>
-    <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="30" cdkAutosizeMaxRows="50" [ariaMultiLine]="true" [(ngModel)]="llmGenService.detailedPromptText"></textarea>
-  </mat-form-field>
+  @if (llmGenService.generatingLlmPrompt) {
+    <mat-spinner></mat-spinner>
+  } @else {
+    <mat-form-field appearance="fill">
+      <mat-label>Detailed Prompt</mat-label>
+      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="30" cdkAutosizeMaxRows="50" [ariaMultiLine]="true" [(ngModel)]="llmGenService.detailedPromptText"></textarea>
+    </mat-form-field>
+  }
 </mat-expansion-panel>
 <br />
 <mat-divider></mat-divider>

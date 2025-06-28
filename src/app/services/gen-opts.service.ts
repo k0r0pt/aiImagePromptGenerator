@@ -128,7 +128,8 @@ export class GenOptsService {
     })
   }
 
-  public filterMyOptions(filteredList: ReplaySubject<Array<string>>, list: Array<string>, searchTerm: string): void {
+  public filterMyOptions(filteredList: ReplaySubject<Array<string>>, list: Array<string>, searchEvent: Event): void {
+    let searchTerm = searchEvent.toString();
     if (!searchTerm) {
       filteredList.next(list.slice());
       return;

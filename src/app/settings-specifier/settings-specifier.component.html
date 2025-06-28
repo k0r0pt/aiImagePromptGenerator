@@ -54,7 +54,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredArtforms, genOptsService.artforms, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let artform of genOptsService.filteredArtforms | async" [value]="artform">{{artform}}</mat-option>
+        @for (artform of genOptsService.filteredArtforms | async; track artform) {
+          <mat-option [value]="artform">{{ artform }}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -66,7 +68,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPhotoTypes, genOptsService.photoTypes, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let photoType of genOptsService.filteredPhotoTypes | async" [value]="photoType">{{photoType}}</mat-option>
+        @for (photoType of genOptsService.filteredPhotoTypes | async; track photoType) {
+          <mat-option [value]="photoType">{{photoType}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -89,7 +93,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredBodyTypes, genOptsService.bodyTypes, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let bodyType of genOptsService.filteredBodyTypes | async" [value]="bodyType">{{bodyType}}</mat-option>
+        @for (bodyType of genOptsService.filteredBodyTypes | async; track bodyType) {
+          <mat-option [value]="bodyType">{{bodyType}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -101,7 +107,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredDefaultTags, genOptsService.defaultTags, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let defaultTag of genOptsService.filteredDefaultTags | async" [value]="defaultTag">{{defaultTag}}</mat-option>
+        @for (defaultTag of genOptsService.filteredDefaultTags | async; track defaultTag) {
+          <mat-option [value]="defaultTag">{{defaultTag}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -113,7 +121,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredRoles, genOptsService.roles, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let role of genOptsService.filteredRoles | async" [value]="role">{{role}}</mat-option>
+        @for (role of genOptsService.filteredRoles | async; track role) {
+          <mat-option [value]="role">{{role}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -125,7 +135,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredHairstyles, genOptsService.hairstyles, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let hairstyle of genOptsService.filteredHairstyles | async" [value]="hairstyle">{{hairstyle}}</mat-option>
+        @for (hairstyle of genOptsService.filteredHairstyles | async; track hairstyle) {
+          <mat-option [value]="hairstyle">{{hairstyle}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -137,7 +149,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredClothing, genOptsService.clothing, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let clothing of genOptsService.filteredClothing | async" [value]="clothing">{{clothing}}</mat-option>
+        @for (clothing of genOptsService.filteredClothing | async; track clothing) {
+          <mat-option [value]="clothing">{{clothing}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -160,7 +174,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPlaces, genOptsService.places, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let place of genOptsService.filteredPlaces | async" [value]="place">{{place}}</mat-option>
+        @for (place of genOptsService.filteredPlaces | async; track place) {
+          <mat-option [value]="place">{{place}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -172,7 +188,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredSceneLighting, genOptsService.sceneLighting, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let lighting of genOptsService.filteredSceneLighting | async" [value]="lighting">{{lighting}}</mat-option>
+        @for (lighting of genOptsService.filteredSceneLighting | async; track lighting) {
+          <mat-option [value]="lighting">{{lighting}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -184,7 +202,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredCompositions, genOptsService.compositions, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let composition of genOptsService.filteredCompositions | async" [value]="composition">{{composition}}</mat-option>
+        @for (composition of genOptsService.filteredCompositions | async; track composition) {
+          <mat-option [value]="composition">{{composition}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -196,7 +216,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPoses, genOptsService.poses, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let pose of genOptsService.filteredPoses | async" [value]="pose">{{pose}}</mat-option>
+        @for (pose of genOptsService.filteredPoses | async; track pose) {
+          <mat-option [value]="pose">{{pose}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -209,7 +231,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredBackgrounds, genOptsService.backgrounds, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let background of genOptsService.filteredBackgrounds | async" [value]="background">{{background}}</mat-option>
+        @for (background of genOptsService.filteredBackgrounds | async; track background) {
+          <mat-option [value]="background">{{background}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -232,7 +256,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredCameras, genOptsService.cameras, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let camera of genOptsService.filteredCameras | async" [value]="camera">{{camera}}</mat-option>
+        @for (camera of genOptsService.filteredCameras | async; track camera) {
+          <mat-option [value]="camera">{{camera}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -244,7 +270,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredColorGradings, genOptsService.colorGradings, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let colorGrading of genOptsService.filteredColorGradings | async" [value]="colorGrading">{{colorGrading}}</mat-option>
+        @for (colorGrading of genOptsService.filteredColorGradings | async; track colorGrading) {
+          <mat-option [value]="colorGrading">{{colorGrading}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -256,7 +284,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredKeywords, genOptsService.keywords, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let keyword of genOptsService.filteredKeywords | async" [value]="keyword">{{keyword}}</mat-option>
+        @for (keyword of genOptsService.filteredKeywords | async; track keyword) {
+          <mat-option [value]="keyword">{{keyword}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -268,7 +298,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredLandscapeSubjects, genOptsService.landscapeSubjects, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let landscapeSubject of genOptsService.filteredLandscapeSubjects | async" [value]="landscapeSubject">{{landscapeSubject}}</mat-option>
+        @for (landscapeSubject of genOptsService.filteredLandscapeSubjects | async; track landscapeSubject) {
+          <mat-option [value]="landscapeSubject">{{landscapeSubject}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -280,7 +312,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredLenses, genOptsService.lenses, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let lens of genOptsService.filteredLenses | async" [value]="lens">{{lens}}</mat-option>
+        @for (lens of genOptsService.filteredLenses | async; track lens) {
+          <mat-option [value]="lens">{{lens}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -292,7 +326,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPhotographyLighting, genOptsService.photographyLighting, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let lighting of genOptsService.filteredPhotographyLighting | async" [value]="lighting">{{lighting}}</mat-option>
+        @for (lighting of genOptsService.filteredPhotographyLighting | async; track lighting) {
+          <mat-option [value]="lighting">{{lighting}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -304,7 +340,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredPhotographers, genOptsService.photographers, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let photographer of genOptsService.filteredPhotographers | async" [value]="photographer">{{photographer}}</mat-option>
+        @for (photographer of genOptsService.filteredPhotographers | async; track photographer) {
+          <mat-option [value]="photographer">{{photographer}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -327,7 +365,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredBasicPoses, genOptsService.basicPoses, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let pose of genOptsService.filteredBasicPoses | async" [value]="pose">{{pose}}</mat-option>
+        @for (pose of genOptsService.filteredBasicPoses | async; track pose) {
+          <mat-option [value]="pose">{{pose}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -339,7 +379,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredAdvancedPoses, genOptsService.advancedPoses, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let pose of genOptsService.filteredAdvancedPoses | async" [value]="pose">{{pose}}</mat-option>
+        @for (pose of genOptsService.filteredAdvancedPoses | async; track pose) {
+          <mat-option [value]="pose">{{pose}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -362,7 +404,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredHouseplants, genOptsService.houseplants, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let houseplant of genOptsService.filteredHouseplants | async" [value]="houseplant">{{houseplant}}</mat-option>
+        @for (houseplant of genOptsService.filteredHouseplants | async; track houseplant) {
+          <mat-option [value]="houseplant">{{houseplant}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -374,7 +418,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredModifiers, genOptsService.modifiers, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let modifier of genOptsService.filteredModifiers | async" [value]="modifier">{{modifier}}</mat-option>
+        @for (modifier of genOptsService.filteredModifiers | async; track modifier) {
+          <mat-option [value]="modifier">{{modifier}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -386,19 +432,23 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredAdvancedScenes, genOptsService.advancedScenes, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let scene of genOptsService.filteredAdvancedScenes | async" [value]="scene">{{scene}}</mat-option>
+        @for (scene of genOptsService.filteredAdvancedScenes | async; track scene) {
+          <mat-option [value]="scene">{{scene}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
   <div class="even">
     <mat-form-field appearance="fill">
       <mat-label>Texture</mat-label>
-      <mat-select [(ngModel)]="this.genOptsService.advancedSceneSettings.texture">
+      <mat-select matInput [(ngModel)]="this.genOptsService.advancedSceneSettings.texture">
         <mat-option>
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredTextures, genOptsService.textures, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let texture of genOptsService.filteredTextures | async" [value]="texture">{{texture}}</mat-option>
+        @for (texture of genOptsService.filteredTextures | async; track texture) {
+          <mat-option [value]="texture">{{texture}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -410,7 +460,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredTrees, genOptsService.trees, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let tree of genOptsService.filteredTrees | async" [value]="tree">{{tree}}</mat-option>
+        @for (tree of genOptsService.filteredTrees | async; track tree) {
+          <mat-option [value]="tree">{{tree}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
@@ -422,7 +474,9 @@
           <ngx-mat-select-search placeholderLabel="Search..." noEntriesFoundLabel="No matching option found" ngModel
             (ngModelChange)="genOptsService.filterMyOptions(genOptsService.filteredWeathers, genOptsService.weathers, $event)"></ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let weather of genOptsService.filteredWeathers | async" [value]="weather">{{weather}}</mat-option>
+        @for (weather of genOptsService.filteredWeathers | async; track weather) {
+          <mat-option [value]="weather">{{weather}}</mat-option>
+        }
       </mat-select>
     </mat-form-field>
   </div>
